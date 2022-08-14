@@ -5,7 +5,7 @@ export default function TodoForm(props) {
 
   const changeHandler = (e) => {
     setInput(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   const submitHandler = (e) => {
@@ -14,12 +14,7 @@ export default function TodoForm(props) {
       alert("Please add todo!");
       return;
     } 
-    const newTodo = {
-      id: Math.floor(Math.random() * 1000),
-      text:input,
-      isCompleted: false
-    }
-    props.setTodos([...props.todos,newTodo])
+      props.addTodoHandler(input)
       setInput("")    
     // add entered input to inputs
   };
