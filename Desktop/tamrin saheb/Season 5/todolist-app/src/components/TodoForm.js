@@ -14,7 +14,12 @@ export default function TodoForm(props) {
       alert("Please add todo!");
       return;
     } 
-      props.addTodoHandler(input)
+    const newTodo = {
+      id: Math.floor(Math.random() * 1000),
+      text:input,
+      isCompleted: false
+    }
+    props.setTodos([...props.todos,newTodo])
       setInput("")    
     // add entered input to inputs
   };

@@ -17,7 +17,7 @@ export default function TodoApp() {
     }
   return (
     <div className='container'>
-    <TodoForm addTodoHandler={addTodoHandler}/>
+    <TodoForm setTodos={setTodos} todos={todos}/>
     <TodoList/>
     </div>
   )
