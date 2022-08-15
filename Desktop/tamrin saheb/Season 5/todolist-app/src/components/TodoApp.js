@@ -1,24 +1,28 @@
-import React,{useState} from 'react'
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
+import React, { useState } from "react";
+import TodoForm from "./TodoForm";
+import TodoList from "./TodoList";
 
 export default function TodoApp() {
-    const [todos,setTodos] = useState([])
+  const [todos, setTodos] = useState([]);
 
+  const addTodoHandler = (input) => {
+    // setTodos(input)
+    const newTodo = {
+      id: Math.floor(Math.random() * 1000),
+      text: input,
+      isCompleted: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
 
-    const addTodoHandler = (input) => {
-      // setTodos(input)
-      const newTodo = {
-        id: Math.floor(Math.random() * 1000),
-        text:input,
-        isCompleted: false
-      }
-      setTodos([...todos,newTodo])
-    }
+  const completeHandler = (id) => {
+    console.log(id);
+  };
+
   return (
-    <div className='container'>
-    <TodoForm addTodoHandler={addTodoHandler}/>
-    <TodoList todos={todos}/>
+    <div className="container">
+      <TodoForm addTodoHandler={addTodoHandler} />
+      <TodoList todos={todos} onComplete={completeHandler} />
     </div>
-  )
+  );
 }
