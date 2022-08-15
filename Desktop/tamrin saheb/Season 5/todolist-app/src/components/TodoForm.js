@@ -15,7 +15,7 @@ export default function TodoForm(props) {
       return;
     } 
       props.addTodoHandler(input)
-      setInput("")    
+      setInput(" ")    
     // add entered input to inputs
   };
 

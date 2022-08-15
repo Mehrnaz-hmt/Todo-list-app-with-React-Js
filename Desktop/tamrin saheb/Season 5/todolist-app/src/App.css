@@ -33,7 +33,13 @@
   align-items: center;
   justify-content: space-between;
   width: 25rem;
-  background-color: aqua;
+  background-color: rgb(171, 197, 218);
   margin: 10px 0;
   padding: 10px;   /*I added*/
 }
+
+.completed {
+  text-decoration: line-through;
+  color: #478165;
+}
+

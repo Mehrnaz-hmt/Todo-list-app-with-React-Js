@@ -12,11 +12,21 @@ export default function TodoApp() {
       text: input,
       isCompleted: false,
     };
+
     setTodos([...todos, newTodo]);
   };
 
   const completeHandler = (id) => {
-    console.log(id);
+    let index = todos.findIndex((item) => item.id === id);
+
+    const selectedTodo = { ...todos[index] }; //Do not Mutate!
+    selectedTodo.isCompleted = !selectedTodo.isCompleted;
+    let updatedTodos = [...todos]; //clone Todos
+    //console.log(updatedTodos);
+    // console.log(todos)
+    updatedTodos[index] = selectedTodo;
+
+    setTodos(updatedTodos);
   };
 
   return (
