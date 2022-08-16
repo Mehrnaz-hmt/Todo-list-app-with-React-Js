@@ -18,21 +18,31 @@ export default function TodoApp() {
 
   const completeHandler = (id) => {
     let index = todos.findIndex((item) => item.id === id);
-
     const selectedTodo = { ...todos[index] }; //Do not Mutate!
+    // console.log(selectedTodo)  //{id: 600, text: '111', isCompleted: false}
     selectedTodo.isCompleted = !selectedTodo.isCompleted;
-    let updatedTodos = [...todos]; //clone Todos
-    //console.log(updatedTodos);
+    // console.log(selectedTodo)  //{id: 600, text: '111', isCompleted: true}
+    console.log(todos);
+    let updatedTodos = [...todos]; // New List of Todos
+    console.log(updatedTodos);
     // console.log(todos)
     updatedTodos[index] = selectedTodo;
-
     setTodos(updatedTodos);
+  };
+
+  const deleteHandler = (id) => {
+    const filteredTodos = todos.filter((item) => item.id !== id);
+    setTodos(filteredTodos);
   };
 
   return (
     <div className="container">
       <TodoForm addTodoHandler={addTodoHandler} />
-      <TodoList todos={todos} onComplete={completeHandler} />
+      <TodoList
+        onDelete={deleteHandler}
+        todos={todos}
+        onComplete={completeHandler}
+      />
     </div>
   );
 }
