@@ -5,14 +5,12 @@ import TodoList from "./TodoList";
 export default function TodoApp() {
   const [todos, setTodos] = useState([]);
 
-  const addTodoHandler = (input) => {
-    // setTodos(input)
+  const addTodo = (input) => {
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
       text: input,
       isCompleted: false,
     };
-
     setTodos([...todos, newTodo]);
   };
 
@@ -35,13 +33,17 @@ export default function TodoApp() {
     setTodos(filteredTodos);
   };
 
+  const updateTodo = (id) => {
+    console.log(id);
+  };
   return (
     <div className="container">
-      <TodoForm addTodoHandler={addTodoHandler} />
+      <TodoForm submitTodo={addTodo} />
       <TodoList
         onDelete={deleteHandler}
         todos={todos}
         onComplete={completeHandler}
+        onUpdateTodo={updateTodo}
       />
     </div>
   );
